@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/home/camilosar/Escritorio/JuegoBrickBreaker/src/modelo/Pelota.java</file>
+            <file>file:/home/camilosar/Escritorio/JuegoBrickBreaker/src/Main.java</file>
+            <file>file:/home/camilosar/Escritorio/JuegoBrickBreaker/src/vista/MainView.java</file>
+            <file>file:/home/camilosar/Escritorio/JuegoBrickBreaker/src/vista/SeleccionarNivelPanel.java</file>
+            <file>file:/home/camilosar/Escritorio/JuegoBrickBreaker/src/controlador/ControladorJuego.java</file>
+            <file>file:/home/camilosar/Escritorio/JuegoBrickBreaker/src/controlador/ControladorVistaGameOver.java</file>
+            <file>file:/home/camilosar/Escritorio/JuegoBrickBreaker/src/controlador/MainController.java</file>
+            <file>file:/home/camilosar/Escritorio/JuegoBrickBreaker/src/controlador/ControladorMenuPrincipal.java</file>
+            <file>file:/home/camilosar/Escritorio/JuegoBrickBreaker/.gitignore</file>
+            <file>file:/home/camilosar/Escritorio/JuegoBrickBreaker/src/vista/VistaGameOver.java</file>
+            <file>file:/home/camilosar/Escritorio/JuegoBrickBreaker/src/controlador/ControladorSeleccionarNivel.java</file>
+            <file>file:/home/camilosar/Escritorio/JuegoBrickBreaker/src/vista/VistaTienda.java</file>
+        </group>
+    </open-files>
+</project-private>

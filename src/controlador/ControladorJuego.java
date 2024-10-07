@@ -29,7 +29,7 @@ public class ControladorJuego {
         this.mainController = controller;
         this.mainContainerSize = mainController.view.viewSize;
         
-        this.pelota = new Pelota(400, 400, 10, 6,6,(int) mainContainerSize.getWidth(), (int)mainContainerSize.getHeight(), null);
+        this.pelota = new Pelota(400, 400, 8, 7,7,(int) mainContainerSize.getWidth(), (int)mainContainerSize.getHeight(), null);
         this.barra = new Barra(10, mainContainerSize.height - 50, 100, 10 , mainContainerSize);
         this.barra.setImagen(new ImageIcon(getClass().getResource("/recursos/Barra.png")).getImage());
         this.bloques = new ArrayList<>();
