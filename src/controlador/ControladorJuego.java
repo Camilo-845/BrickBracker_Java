@@ -25,7 +25,7 @@ public class ControladorJuego {
     private Dimension mainContainerSize;
     private int vidas;
  
-    public ControladorJuego(MainController controller,VistaJuego panelPelota) {
+    public ControladorJuego(MainController controller,VistaJuego panelPelota, int[][] mapa) {
         this.panelPelota = panelPelota;
         this.mainController = controller;
         this.mainContainerSize = mainController.view.viewSize;
@@ -35,7 +35,7 @@ public class ControladorJuego {
         this.barra = new Barra(10, mainContainerSize.height - 50, 100, 10 , mainContainerSize);
         this.barra.setImagen(new ImageIcon(getClass().getResource("/recursos/Barra.png")).getImage());
         this.bloques = new ArrayList<>();
-        this.generarBloques(4, 10, 30, 30, 40);
+        this.generarBloques(mapa, 30, 30, 40);
         
         pelota.setVelocidadX();
         pelota.setVelocidadY();
@@ -139,7 +139,9 @@ public class ControladorJuego {
         panelPelota.detener();
     }
     
-    private void generarBloques(int filas, int columnas, int margenX, int margenY, int alturaBloques){
+    private void generarBloques(int[][] matriz, int margenX, int margenY, int alturaBloques){
+        int filas = matriz.length;
+        int columnas = matriz[0].length;
         int anchoPanel = this.mainContainerSize.width - (2 * margenX);
         int anchoColumna = anchoPanel / columnas;
         for(int n = 1 ; n <= ( filas * columnas ) ; n++){
@@ -173,10 +175,18 @@ public class ControladorJuego {
                     new ImageIcon(getClass().getResource("/recursos/ImagenesBloques/BloqueRosado_4.png")).getImage()
                 ))
             );
-            int aleatorio = obtenerAleatorio(0, listaDurezas.size()-1);
-            bloque.dureza = listaDurezas.get(aleatorio);
-            bloque.setImagen(bloque.dureza.imagenes.get(bloque.dureza.dureza-1));
-            this.bloques.add(bloque);
+            if(matriz[fila-1][columna-1] ==1){               
+                int aleatorio = obtenerAleatorio(0, listaDurezas.size()-1);
+                bloque.dureza = listaDurezas.get(aleatorio);
+                bloque.setImagen(bloque.dureza.imagenes.get(bloque.dureza.dureza-1));
+                this.bloques.add(bloque);
+            }
+            else if(matriz[fila-1][columna-1] > 1){
+                int valorBloque = matriz[fila-1][columna-1];
+                bloque.dureza = listaDurezas.get(valorBloque -2);
+                bloque.setImagen(bloque.dureza.imagenes.get(bloque.dureza.dureza-1));
+                this.bloques.add(bloque);
+            }
         }
     }
     

@@ -1,6 +1,7 @@
 package controlador;
 
-import Utils.utilsMusica;
+import Utils.*;
+import java.io.IOException;
 import vista.*;
 
 import javax.swing.ImageIcon;
@@ -65,10 +66,29 @@ public class MainController {
 
     public void iniciarVistaJuego(){
         String bgImagePath = "/recursos/NivelUnoBackg.png";
+        // Generación de mapa segun matriz
+        // 0 -> vacio
+        // 1 -> bloque aleatorio
+        // 2...n -> bloque con dureza n-1
+        int[][] defaultMap = {
+            {2, 3, 4, 5, 2, 3, 4, 5, 2, 3},
+            {3, 4, 5, 2, 3, 4, 5, 2, 3, 4},
+            {4, 5, 2, 3, 4, 5, 2, 3, 4, 5},
+            {5, 2, 3, 4, 5, 2, 3, 4, 5, 2},
+            {2, 3, 4, 5, 2, 3, 4, 5, 2, 3}
+        };
         
+        int[][] mapa = defaultMap;
         switch(this.nivelDificultad){
             case 1:
                 bgImagePath = "/recursos/NivelUnoBackg.png";
+                try {
+                    mapa = new CSVtoMatrix().leerCSV("src/recursos/mapas/mapa1.cvs", ",");
+                } catch (IOException e) {
+                    System.out.println("Error al leer el archivo CSV: " + e.getMessage());
+                    mapa = defaultMap;
+                }
+                
                 if(musicaActiva){
                     utilsMusica.getInstancia().stop();
                     utilsMusica.getInstancia();
@@ -77,15 +97,29 @@ public class MainController {
                 }
                 break;
             case 2:
+                try {
+                    mapa = new CSVtoMatrix().leerCSV("src/recursos/mapas/mapa2.cvs", ",");
+                } catch (IOException e) {
+                    System.out.println("Error al leer el archivo CSV: " + e.getMessage());
+                    mapa = defaultMap;
+                }
+                
                 if(musicaActiva){
                     bgImagePath = "/recursos/NivelDosBackGround.png";
                     utilsMusica.getInstancia().stop();
                     utilsMusica.getInstancia();
                     utilsMusica.getInstancia().cargarOST("src/recursos/ost/segundo.wav");
                     utilsMusica.getInstancia().playuntil();
-                }
+                } 
                 break;
             case 3:
+                try {
+                    mapa = new CSVtoMatrix().leerCSV("src/recursos/mapas/mapa3.cvs", ",");
+                } catch (IOException e) {
+                    System.out.println("Error al leer el archivo CSV: " + e.getMessage());
+                    mapa = defaultMap;
+                }
+                
                 if(musicaActiva){
                     bgImagePath = "/recursos/NivelTresBackground.png";
                     utilsMusica.getInstancia().stop();
@@ -99,7 +133,7 @@ public class MainController {
         VistaJuego gameView = new VistaJuego();
         gameView.backgroundImage = new ImageIcon(getClass().getResource(bgImagePath)).getImage();
         view.changeView(gameView);
-        ControladorJuego controladorPelota = new ControladorJuego(this,gameView);
+        ControladorJuego controladorPelota = new ControladorJuego(this,gameView, mapa);
         controladorPelota.iniciar();
         this.puntajeJuego = 0;
         this.resultadoUltimoJuego = true;
