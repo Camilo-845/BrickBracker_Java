@@ -17,7 +17,8 @@ public class VistaJuego extends JPanel {
     private Pelota pelota; 
     private Barra barra; 
     private List<Bloque> bloques;
-    
+    public int puntaje;
+    public int vidas;
 
     public void setBloques(List<Bloque> bloques) {
         this.bloques = bloques;
@@ -35,7 +36,8 @@ public class VistaJuego extends JPanel {
     
     public VistaJuego() { 
         setPreferredSize(new Dimension(800, 600)); 
-        
+        this.puntaje = 0;
+        this.vidas = 3;
         // Inicializa el listener aquí y lo guardas en la variable
         mouseListener = new MouseMotionListener() { 
             @Override 
@@ -58,6 +60,13 @@ public class VistaJuego extends JPanel {
         if (backgroundImage != null) {
             g.drawImage(backgroundImage, 0, 0, getWidth(), getHeight(), this);
         }
+        g.setColor(Color.white);
+        g.setFont(new Font("Sagoe UI",0, 20));
+        g.drawString("Puntaje", 685, 20);
+        g.drawString(""+this.puntaje, 770, 20);
+        
+        g.drawString("Vidas", 500, 20);
+        g.drawString(""+this.vidas, 600, 20);
         
         g.setColor(Color.RED); 
         g.fillOval(pelota.getX() - pelota.getRadio(), pelota.getY() - pelota.getRadio(), 

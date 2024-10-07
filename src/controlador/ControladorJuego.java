@@ -23,12 +23,14 @@ public class ControladorJuego {
     private Timer temporizador; 
     private MainController mainController;
     private Dimension mainContainerSize;
+    private int vidas;
  
     public ControladorJuego(MainController controller,VistaJuego panelPelota) {
         this.panelPelota = panelPelota;
         this.mainController = controller;
         this.mainContainerSize = mainController.view.viewSize;
         
+        this.vidas = 3;
         this.pelota = new Pelota(400, 400, 8, 7,7,(int) mainContainerSize.getWidth(), (int)mainContainerSize.getHeight(), null);
         this.barra = new Barra(10, mainContainerSize.height - 50, 100, 10 , mainContainerSize);
         this.barra.setImagen(new ImageIcon(getClass().getResource("/recursos/Barra.png")).getImage());
@@ -58,9 +60,17 @@ public class ControladorJuego {
     private void verificarColision() { 
         //Colisiones pelota con panel
         if(pelota.getY() + pelota.getRadio() > mainContainerSize.getHeight()){
-            mainController.resultadoUltimoJuego = false;
-            mainController.inicarVistaGameOver();
-            detener();
+            vidas --;
+            panelPelota.vidas--;
+            if(vidas > 0){
+               ubicarPelotaPosicionInicial();
+            }
+            else{
+                mainController.resultadoUltimoJuego = false;
+                mainController.inicarVistaGameOver();
+                detener();
+            }
+            
         }
         
         if (pelota.getX()- pelota.getRadio() < 0 || pelota.getX() + pelota.getRadio() > mainContainerSize.width){
@@ -109,10 +119,16 @@ public class ControladorJuego {
                     bloque.setImagen(bloque.dureza.imagenes.get(bloque.dureza.dureza-1));
                 } 
                 mainController.puntajeJuego++;
+                panelPelota.puntaje++;
             }
         }
     } 
  
+    private void ubicarPelotaPosicionInicial(){
+        this.pelota.setPosition(400, 400);
+        this.pelota.setVelocidadX(7);
+        this.pelota.setVelocidadY(-7);
+    }
     public void iniciar() {
         panelPelota.iniciar();
         temporizador.start(); 
