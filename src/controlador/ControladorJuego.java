@@ -33,7 +33,7 @@ public class ControladorJuego {
         this.barra = new Barra(10, mainContainerSize.height - 50, 100, 10 , mainContainerSize);
         this.barra.setImagen(new ImageIcon(getClass().getResource("/recursos/Barra.png")).getImage());
         this.bloques = new ArrayList<>();
-        this.generarBloques(4, 10, 30, 10, 40);
+        this.generarBloques(4, 10, 30, 30, 40);
         
         pelota.setVelocidadX();
         pelota.setVelocidadY();
