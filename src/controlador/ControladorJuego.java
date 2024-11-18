@@ -83,15 +83,12 @@ public class ControladorJuego {
         
         //Conlisiones pelota con barra
         if (barra.estaColisionando(pelota) != 0) {
-            // Obtener el centro de la barra y la pelota
             int centroBarra = barra.getX() + (barra.getSize().width / 2);
             int centroPelota = pelota.getX() + (pelota.getSize().width / 2);
-
-            // Distancia entre el centro de la pelota y el centro de la barra
             int distancia = centroPelota - centroBarra;
 
             // Factor de ajuste para cambiar la velocidad en X en función de la distancia
-            int factor = 2;  // Puedes ajustar este valor para que la velocidad cambie más o menos
+            int factor = 2;
 
             // Cambiar la dirección de la velocidad en X basado en la distancia del centro
             pelota.setVelocidadX(distancia / factor);

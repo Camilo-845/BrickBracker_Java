@@ -3,11 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/camilosar/Escritorio/JuegoBrickBreaker/src/controlador/ControladorJuego.java</file>
-            <file>file:/home/camilosar/Escritorio/JuegoBrickBreaker/src/controlador/ControladorVistaGameOver.java</file>
-            <file>file:/home/camilosar/Escritorio/JuegoBrickBreaker/src/controlador/ControladorMenuPrincipal.java</file>
-            <file>file:/home/camilosar/Escritorio/JuegoBrickBreaker/src/controlador/ControladorVistaConfiguracion.java</file>
-            <file>file:/home/camilosar/Escritorio/JuegoBrickBreaker/src/controlador/ControladorSeleccionarNivel.java</file>
+            <file>file:/home/camilosar/Escritorio/JuegoBrickBreaker/nbproject/project.xml</file>
+            <file>file:/home/camilosar/Escritorio/JuegoBrickBreaker/nbproject/genfiles.properties</file>
+            <file>file:/home/camilosar/Escritorio/JuegoBrickBreaker/build.xml</file>
+            <file>file:/home/camilosar/Escritorio/JuegoBrickBreaker/nbproject/project.properties</file>
+            <file>file:/home/camilosar/Escritorio/JuegoBrickBreaker/JuegoBrickBreaker.iml</file>
         </group>
     </open-files>
 </project-private>
